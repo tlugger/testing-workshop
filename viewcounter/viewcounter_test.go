@@ -45,7 +45,7 @@ func TestAddViewTableTest(t *testing.T) {
 			expectedCount: 1,
 		},
 		{
-			description: "millionth viewv",
+			description: "millionth view",
 			video: &VideoMetadata{
 				Title: "my best video",
 				Views: 999999,

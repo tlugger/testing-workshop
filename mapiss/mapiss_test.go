@@ -67,11 +67,7 @@ func TestGetLocation(t *testing.T) {
 }
 
 func TestFormatLatLong(t *testing.T) {
-	// formatLatLong()
-}
-
-func TestGetMapContext(t *testing.T) {
-	// createMapContext()
+	// FormatLatLong()
 }
 
 func TestMapISSLocation(t *testing.T) {
