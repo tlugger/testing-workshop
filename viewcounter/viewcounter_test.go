@@ -45,12 +45,20 @@ func TestAddViewTableTest(t *testing.T) {
 			expectedCount: 1,
 		},
 		{
-			description: "millionth viewv",
+			description: "millionth view",
 			video: &VideoMetadata{
 				Title: "my best video",
 				Views: 999999,
 			},
 			expectedCount: 1000000,
+		},
+		{
+			description: "integer overflow",
+			video: &VideoMetadata{
+				Title: "my best video",
+				Views: 2147483647,
+			},
+			expectedCount: 2147483648,
 		},
 	}
 	for _, tc := range testcases {

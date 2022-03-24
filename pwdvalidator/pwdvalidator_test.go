@@ -20,10 +20,46 @@ func TestValidatePassword(t *testing.T) {
 			expectErrMsg: "",
 		},
 		{
+			description:  "empty password",
+			password:     "",
+			expectErr:    true,
+			expectErrMsg: "MUST_PROVIDE_PASSWORD",
+		},
+		{
+			description:  "short password",
+			password:     "a",
+			expectErr:    true,
+			expectErrMsg: "PWD_TOO_SHOT",
+		},
+		{
+			description:  "long password",
+			password:     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+			expectErr:    true,
+			expectErrMsg: "PWD_TOO_LONG",
+		},
+		{
 			description:  "common password",
 			password:     "password",
 			expectErr:    true,
 			expectErrMsg: "PWD_NOT_SECURE",
+		},
+		{
+			description:  "no uppercase password",
+			password:     "asecurepassword",
+			expectErr:    true,
+			expectErrMsg: "PWD_MUST_INCLUDE_UPPERCASE_LETTER",
+		},
+		{
+			description:  "no lowercase password",
+			password:     "ASECUREPASSWORD",
+			expectErr:    true,
+			expectErrMsg: "PWD_MUST_INCLUDE_LOWERCASE_LETTER",
+		},
+		{
+			description:  "no special char password",
+			password:     "ASecurePassword",
+			expectErr:    true,
+			expectErrMsg: "PWD_MUST_INCLUDE_SPECIAL_CHARACTER",
 		},
 	}
 	for _, tc := range testcases {
